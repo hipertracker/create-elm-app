@@ -139,3 +139,84 @@ We would love to get you involved! Please check our [Contributing Guide](CONTRIB
 - [elm-starter](https://github.com/splodingsocks/elm-starter)
 - [elm-live](https://github.com/tomekwi/elm-live)
 - [generator-elmlang](https://github.com/Gizra/generator-elmlang)
+
+## Hybrid web app (extended)
+
+You can run together Elm with React and CSS modules.
+
+### Install
+
+```
+yarn add react react-dom
+yarn add babel-preset-env babel-preset-stage-0 babel-plugin-transform-react-jsx -D
+```
+
+Create `.babelrc` file:
+
+```
+{
+  "presets": ["env", "stage-0"],
+  "plugins": [
+    ["transform-react-jsx"]
+  ]
+}
+```
+
+## Executing Elm side by side with React and CSS modules
+
+Create CSS module file `styles.module.css` 
+(the filename has to use .module.css suffix)
+
+```
+.highlight {
+    color: red;
+    background-color: yellow;
+}
+```
+
+Create `HiReact.js` file:
+
+```
+import React from 'react';
+import styles from './styles.module.css';
+
+export default function HiReact () {
+  return (
+    <h1 className={styles.highlight}>Hi React!</h1>
+  );
+}
+```
+
+Add two placeholders into `public/index.html` ()inside the `<body>` tag).
+
+```
+<div id="react-root">Loading React...</div>
+<div id="elm-root">Loading Elm</div>
+```
+
+
+Change starting `index.js` to
+
+```
+import React from 'react';
+import { render } from 'react-dom';
+import HiReact from './HiReact';
+import './main.css';
+import { Main } from './Main.elm';
+import registerServiceWorker from './registerServiceWorker';
+
+render(<HiReact/>, document.getElementById('react-root'));
+
+Main.embed(document.getElementById('elm-root'));
+
+registerServiceWorker();
+```
+
+Start the app
+
+```
+/path/to/this/github/create-elm-app/bin/elm-app-cli.js start
+```
+
+
+

@@ -153,7 +153,7 @@ yarn add babel-preset-env babel-preset-stage-0 babel-plugin-transform-react-jsx 
 
 Create `.babelrc` file:
 
-```json
+```javascript
 {
   "presets": ["env", "stage-0"],
   "plugins": [

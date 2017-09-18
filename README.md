@@ -167,7 +167,7 @@ Create `.babelrc` file:
 Create CSS module file `styles.module.css` 
 (the filename has to use .module.css suffix)
 
-```
+```css
 .highlight {
     color: red;
     background-color: yellow;
@@ -176,7 +176,7 @@ Create CSS module file `styles.module.css`
 
 Create `HiReact.js` file:
 
-```
+```javascript
 import React from 'react';
 import styles from './styles.module.css';
 
@@ -189,11 +189,10 @@ export default function HiReact () {
 
 Add two placeholders into `public/index.html` ()inside the `<body>` tag).
 
-```
+```html
 <div id="react-root">Loading React...</div>
 <div id="elm-root">Loading Elm</div>
 ```
-
 
 Change starting `index.js` to
 

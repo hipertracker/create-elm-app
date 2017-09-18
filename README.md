@@ -197,7 +197,7 @@ Add two placeholders into `public/index.html` ()inside the `<body>` tag).
 
 Change starting `index.js` to
 
-```
+```javascript
 import React from 'react';
 import { render } from 'react-dom';
 import HiReact from './HiReact';

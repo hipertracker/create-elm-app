@@ -141,7 +141,9 @@ module.exports = {
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[sha512:hash:base32]-[name]-[local]'
             }
           },
           {
@@ -163,40 +165,6 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.module\.css$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: Object.assign(
-              {importLoaders: 1},
-              {
-                localIdentName: '[sha512:hash:base32]-[name]-[local]',
-                modules: true
-              }
-            )
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9'
-                  ]
-                })
-              ]
-            }
-          }
-        ]
-      },
-
       {
         exclude: [/\.html$/, /\.js$/, /\.elm$/, /\.css$/, /\.json$/, /\.svg$/],
         loader: require.resolve('url-loader'),

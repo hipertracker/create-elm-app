@@ -187,7 +187,7 @@ export default function HiReact () {
 }
 ```
 
-Add two placeholders into `public/index.html` ()inside the `<body>` tag).
+Add two placeholders into `public/index.html` (inside the `<body>` tag).
 
 ```html
 <div id="react-root">Loading React...</div>
